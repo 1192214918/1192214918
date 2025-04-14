@@ -489,7 +489,7 @@
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         const isAndroid = /Android/.test(navigator.userAgent);
         
-        alert('设备类型检测22:');
+        alert('设备类型检测33:');
         alert('isIOS:' + isIOS);
         alert('isAndroid:' + isAndroid);
         
@@ -504,7 +504,7 @@
                 window.location.href = `iosamap://poi?sourceApplication=appname&name=${destination}`;
             } else if (isAndroid) {
                 alert('尝试打开Android高德地图...');
-                window.location.href = `amapuri://route/plan/?sourceApplication=mhc$dname=${destination}&dev=0&t=0`;
+                return `amapuri://route/plan/?sourceApplication=mhc&dlat=23.69781&dlon=113.03027&dname=${destination}&dev=0&t=0`;
             } else {
                 alert('尝试打开网页版高德地图...');
                 window.open(`https://uri.amap.com/search?keyword=${destination}`);

@@ -489,10 +489,6 @@
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         const isAndroid = /Android/.test(navigator.userAgent);
         
-        alert('设备类型检测44:');
-        alert('isIOS:' + isIOS);
-        alert('isAndroid:' + isAndroid);
-        
         try {
             // 根据当前活动的日期选择导航目的地
             const activeDay = document.querySelector('.day-tab.active').getAttribute('data-day');
@@ -500,13 +496,13 @@
             let destination = activeDay === '1' ? '清远擎天玻璃桥' : '清远湟川三峡';
 
             if (isIOS) {
-                alert('尝试打开iOS高德地图...');
+                alert('尝试打开iOS高德地图66...');
                 window.location.href = `iosamap://poi?sourceApplication=appname&name=${destination}`;
             } else if (isAndroid) {
-                alert('尝试打开Android高德地图...');
+                alert('尝试打开Android高德地图66...');
                 window.location.href = `amapuri://route/plan/?sourceApplication=mhc&dlat=23.69781&dlon=113.03027&dname=${destination}&dev=0&t=0`;
             } else {
-                alert('尝试打开网页版高德地图...');
+                alert('尝试打开网页版高德地图66...');
                 window.open(`https://uri.amap.com/search?keyword=${destination}`);
             }
         } catch (error) {

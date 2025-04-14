@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清远革命之旅</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-100-M/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --red: #e10600;
+            --black: #000000;
+            --white: #ffffff;
+            --gray: #cccccc;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            padding: 0;
+            position: relative;
+        }
+
+        /* 几何形状元素 */
+        .geometric-shape {
+            position: absolute;
+            z-index: 0;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .triangle-1 {
+            top: 50px;
+            left: -20px;
+            border-width: 0 50px 100px 0;
+            border-color: transparent var(--red) transparent transparent;
+            transform: rotate(15deg);
+        }
+
+        .triangle-2 {
+            bottom: 100px;
+            right: 30px;
+            border-width: 100px 0 0 50px;
+            border-color: transparent transparent transparent var(--red);
+            transform: rotate(-10deg);
+        }
+
+        .circle {
+            border-radius: 50%;
+        }
+
+        .circle-1 {
+            width: 80px;
+            height: 80px;
+            background-color: var(--red);
+            top: 200px;
+            right: 40px;
+            opacity: 0.7;
+        }
+
+        .diagonal-line {
+            width: 150px;
+            height: 3px;
+            background-color: var(--red);
+            transform: rotate(-45deg);
+            top: 350px;
+            left: 30px;
+        }
+
+        .rectangle {
+            width: 120px;
+            height: 20px;
+            background-color: var(--red);
+            transform: rotate(25deg);
+            bottom: 240px;
+            left: 20px;
+        }
+
+        /* 标题区样式 */
+        .header {
+            position: relative;
+            z-index: 1;
+            padding: 2rem 1rem;
+            transform: skew(-5deg);
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--red);
+            margin: 0;
+            line-height: 1;
+            letter-spacing: -2px;
+            transform: rotate(-3deg);
+        }
+
+        .header h1 span {
+            display: block;
+            font-size: 2.5rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+            transform: rotate(2deg);
+            text-align: right;
+            font-weight: 700;
+        }
+
+        /* 行程区样式 */
+        .itinerary {
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        .itinerary-item {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-left: 4px solid var(--red);
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            position: relative;
+            transform: skew(-2deg);
+        }
+
+        .itinerary-item:nth-child(odd) {
+            margin-left: 1rem;
+            transform: skew(2deg);
+        }
+
+        .itinerary-item:nth-child(even) {
+            margin-right: 1rem;
+        }
+
+        .itinerary-item h2 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--red);
+            margin: 0 0 0.5rem 0;
+            transform: translateX(-10px);
+        }
+
+        .itinerary-item .time {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .itinerary-item .description {
+            font-size: 1rem;
+        }
+
+        .itinerary-item:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--red);
+            top: -10px;
+            left: -12px;
+            transform: rotate(45deg);
+        }
+
+        /* 小景点列表样式 */
+        .attractions {
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+            margin-top: 3rem;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .attractions h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--red);
+            transform: rotate(-2deg);
+            margin-bottom: 1.5rem;
+        }
+
+        .attraction-item {
+            border-bottom: 1px solid var(--gray);
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .attraction-item i {
+            color: var(--red);
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        /* 实用信息样式 */
+        .tips {
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .tips h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--red);
+            transform: rotate(-2deg);
+            margin-bottom: 1.5rem;
+        }
+
+        .tip-item {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .tip-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 3px;
+            background-color: var(--red);
+        }
+
+        /* 工业元素 */
+        .gear {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: var(--red);
+            border-radius: 50%;
+            bottom: -20px;
+            right: 30px;
+            z-index: 0;
+        }
+
+        .gear:before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: var(--black);
+            border-radius: 50%;
+            top: 15px;
+            left: 15px;
+        }
+
+        /* 日期选择器 */
+        .day-tabs {
+            display: flex;
+            margin-bottom: 1rem;
+            padding: 0 1rem;
+        }
+
+        .day-tab {
+            padding: 0.5rem 1rem;
+            margin-right: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            cursor: pointer;
+            transform: skew(-10deg);
+            transition: all 0.3s ease;
+        }
+
+        .day-tab.active {
+            background-color: var(--red);
+            color: var(--white);
+        }
+
+        .day-content {
+            display: none;
+        }
+
+        .day-content.active {
+            display: block;
+        }
+
+        /* 导航按钮 */
+        .nav-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--red);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            z-index: 10;
+            clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 几何形状元素 -->
+    <div class="geometric-shape triangle triangle-1"></div>
+    <div class="geometric-shape triangle triangle-2"></div>
+    <div class="geometric-shape circle circle-1"></div>
+    <div class="geometric-shape diagonal-line"></div>
+    <div class="geometric-shape rectangle"></div>
+
+    <!-- 标题区 -->
+    <header class="header">
+        <h1>清远<span>探索</span></h1>
+        <p>2025年4月20日 — 4月21日</p>
+    </header>
+
+    <!-- 日期选择器 -->
+    <div class="day-tabs">
+        <div class="day-tab active" data-day="1">第一天</div>
+        <div class="day-tab" data-day="2">第二天</div>
+    </div>
+
+    <!-- 第一天行程 -->
+    <div class="day-content active" id="day1">
+        <section class="itinerary">
+            <div class="itinerary-item">
+                <h2>从化出发</h2>
+                <div class="time">20:00</div>
+                <div class="description">
+                    出发，沿G45大广高速，转S16佛清从高速，
+                    再转S1广连高速前往清远
+                </div>
+            </div>
+
+            <div class="itinerary-item">
+                <h2>抵达清远</h2>
+                <div class="time">22:45</div>
+                <div class="description">
+                    抵达清远市区，入住酒店休息
+                </div>
+            </div>
+
+            <div class="itinerary-item">
+                <h2>前往擎天玻璃桥</h2>
+                <div class="time">09:00</div>
+                <div class="description">
+                    从市区出发，经107国道、389县道前往擎天玻璃桥景区
+                </div>
+            </div>
+
+            <div class="itinerary-item">
+                <h2>挑战擎天玻璃桥</h2>
+                <div class="time">10:30 - 15:00</div>
+                <div class="description">
+                    体验惊险刺激的玻璃桥，挑战高空滑索，
+                    欣赏连州山水风光
+                </div>
+            </div>
+
+            <div class="itinerary-item">
+                <h2>前往湟川三峡</h2>
+                <div class="time">15:00 - 16:00</div>
+                <div class="description">
+                    沿389县道、连江东路前往湟川三峡附近
+                </div>
+            </div>
+
+            <div class="itinerary-item">
+                <h2>探索周边小景点</h2>
+                <div class="time">16:00 - 18:00</div>
+                <div class="description">
+                    游览望江亭、龙潭生态旅游度假区，体验过山瑶表演
+                </div>
+            </div>
+        </section>
+
+        <section class="attractions">
+            <h2>推荐小景点</h2>
+            <div class="attraction-item">
+                <i class="fas fa-landmark"></i>
+                <span>望江亭</span>
+            </div>
+            <div class="attraction-item">
+                <i class="fas fa-tree"></i>
+                <span>龙潭生态旅游度假区</span>
+            </div>
+            <div class="attraction-item">
+                <i class="fas fa-mountain"></i>
+                <span>冷然洞摩崖石刻</span>
+            </div>
+        </section>
+    </div>
+
+    <!-- 第二天行程 -->
+    <div class="day-content" id="day2">
+        <section class="itinerary">
+            <div class="itinerary-item">
+                <h2>早餐</h2>
+                <div class="time">08:00 - 09:00</div>
+                <div class="description">
+                    享用早餐，准备一天的游览
+                </div>
+            </div>
+
+            <div class="itinerary-item">
+                <h2>湟川三峡游船</h2>
+                <div class="time">09:30 - 14:30</div>
+                <div class="description">
+                    乘船游览三峡风光，欣赏清远特色喀斯特地貌，
+                    在景区内享用午餐
+                </div>
+            </div>
+
+            <div class="itinerary-item">
+                <h2>冷然洞摩崖石刻</h2>
+                <div class="time">14:30 - 15:00</div>
+                <div class="description">
+                    游览湟川三峡附近的历史文化景点
+                </div>
+            </div>
+
+            <div class="itinerary-item">
+                <h2>收拾行装准备返程</h2>
+                <div class="time">15:00 - 16:30</div>
+                <div class="description">
+                    整理行装，结束愉快的旅程
+                </div>
+            </div>
+
+            <div class="itinerary-item">
+                <h2>返回从化</h2>
+                <div class="time">17:00 - 20:00</div>
+                <div class="description">
+                    沿107国道、S1广连高速、S16佛清从高速、
+                    G45大广高速返回从化
+                </div>
+            </div>
+        </section>
+
+        <section class="tips">
+            <h2>实用信息</h2>
+            <div class="tip-item">自驾是最佳选择，景点之间距离较远，公共交通不便</div>
+            <div class="tip-item">擎天玻璃桥周末人流量大，建议提前购票</div>
+            <div class="tip-item">湟川三峡游船有固定班次，请提前了解时间</div>
+            <div class="tip-item">携带舒适的运动鞋、防晒用品、饮用水和雨具</div>
+            <div class="tip-item">如遇天气不佳，可调整行程，增加室内景点</div>
+        </section>
+    </div>
+
+    <!-- 工业元素 -->
+    <div class="gear"></div>
+
+    <!-- 导航按钮 -->
+    <button class="nav-button" onclick="openMap()">查看地图导航</button>
+</div>
+
+<script>
+    // 日期切换功能
+    document.querySelectorAll('.day-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            // 移除所有活动状态
+            document.querySelectorAll('.day-tab').forEach(t => {
+                t.classList.remove('active');
+            });
+            document.querySelectorAll('.day-content').forEach(c => {
+                c.classList.remove('active');
+            });
+
+            // 添加当前活动状态
+            tab.classList.add('active');
+            const day = tab.getAttribute('data-day');
+            document.getElementById(`day${day}`).classList.add('active');
+        });
+    });
+
+    // 导航功能
+    function openMap() {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const isAndroid = /Android/.test(navigator.userAgent);
+
+        // 根据当前活动的日期选择导航目的地
+        const activeDay = document.querySelector('.day-tab.active').getAttribute('data-day');
+        let destination = activeDay === '1' ? '清远擎天玻璃桥' : '清远湟川三峡';
+
+        if (isIOS) {
+            window.location.href = `iosamap://poi?sourceApplication=appname&name=${destination}`;
+        } else if (isAndroid) {
+            window.location.href = `androidamap://poi?sourceApplication=appname&name=${destination}`;
+        } else {
+            window.open(`https://uri.amap.com/search?keyword=${destination}`);
+        }
+    }
+</script>
+</body>
+</html>

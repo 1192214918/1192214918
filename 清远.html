@@ -488,17 +488,31 @@
     function openMap() {
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         const isAndroid = /Android/.test(navigator.userAgent);
+        
+        alert('设备类型检测:');
+        alert('isIOS:' + isIOS);
+        alert('isAndroid:' + isAndroid);
+        
+        try {
+            // 根据当前活动的日期选择导航目的地
+            const activeDay = document.querySelector('.day-tab.active').getAttribute('data-day');
+            alert('当前活动日期:' + activeDay);
+            
+            let destination = activeDay === '1' ? '清远擎天玻璃桥' : '清远湟川三峡';
+            alert('导航目的地:' + destination);
 
-        // 根据当前活动的日期选择导航目的地
-        const activeDay = document.querySelector('.day-tab.active').getAttribute('data-day');
-        let destination = activeDay === '1' ? '清远擎天玻璃桥' : '清远湟川三峡';
-
-        if (isIOS) {
-            window.location.href = `iosamap://poi?sourceApplication=appname&name=${destination}`;
-        } else if (isAndroid) {
-            window.location.href = `androidamap://poi?sourceApplication=appname&name=${destination}`;
-        } else {
-            window.open(`https://uri.amap.com/search?keyword=${destination}`);
+            if (isIOS) {
+                alert('尝试打开iOS高德地图...');
+                window.location.href = `iosamap://poi?sourceApplication=appname&name=${destination}`;
+            } else if (isAndroid) {
+                alert('尝试打开Android高德地图...');
+                window.location.href = `androidamap://poi?sourceApplication=appname&name=${destination}`;
+            } else {
+                alert('尝试打开网页版高德地图...');
+                window.open(`https://uri.amap.com/search?keyword=${destination}`);
+            }
+        } catch (error) {
+            alert('导航过程中发生错误:' + error);
         }
     }
 </script>

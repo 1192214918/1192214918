@@ -503,8 +503,9 @@
                     alert('尝试打开iOS高德地图77...');
                     window.location.href = `iosamap://poi?sourceApplication=appname&name=${destination}`;
                 } else if (isAndroid) {
-                    alert('尝试打开Android高德地图77...');
-                    window.open(`amapuri://route/plan/?sourceApplication=mhc&dlat=23.69781&dlon=113.03027&dname=${destination}&dev=0&t=0`)
+                    alert('尝试打开Android高德地图88...');
+                    window.open(`https://uri.amap.com/search?keyword=${destination}`);
+                    // window.open(`amapuri://route/plan/?sourceApplication=mhc&dlat=23.69781&dlon=113.03027&dname=${destination}&dev=0&t=0`)
                 } else {
                     alert('尝试打开网页版高德地图77...');
                     window.open(`https://uri.amap.com/search?keyword=${destination}`);

@@ -506,7 +506,7 @@
                 window.location.href = `iosamap://poi?sourceApplication=appname&name=${destination}`;
             } else if (isAndroid) {
                 alert('尝试打开Android高德地图...');
-                window.location.href = `androidamap://poi?sourceApplication=appname&name=${destination}`;
+                window.location.href = `androidamap://navi?sourceApplication=appname&poiname=${destination}&lat=23.69781&lon=113.03027&dev=0&style=2`;
             } else {
                 alert('尝试打开网页版高德地图...');
                 window.open(`https://uri.amap.com/search?keyword=${destination}`);

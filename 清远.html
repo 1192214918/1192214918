@@ -496,10 +496,8 @@
         try {
             // 根据当前活动的日期选择导航目的地
             const activeDay = document.querySelector('.day-tab.active').getAttribute('data-day');
-            alert('当前活动日期:' + activeDay);
             
             let destination = activeDay === '1' ? '清远擎天玻璃桥' : '清远湟川三峡';
-            alert('导航目的地:' + destination);
 
             if (isIOS) {
                 alert('尝试打开iOS高德地图...');

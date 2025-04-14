@@ -504,7 +504,7 @@
 
                 if (isWeixin) {
                     // 在微信中，使用iframe尝试跳转
-                    const iframe = document.createElement('iframe');
+                    /* const iframe = document.createElement('iframe');
                     iframe.style.display = 'none';
                     iframe.src = isIOS ? `iosamap://poi?sourceApplication=appname&name=清远擎天玻璃桥` :
                         `amapuri://route/plan/?sourceApplication=mhc&dlat=23.69781&dlon=113.03027&dname=${destination}&dev=0&t=0`;
@@ -513,16 +513,19 @@
                         document.body.removeChild(iframe);
                         // 如果跳转失败，打开网页版
                         window.open(`https://uri.amap.com/search?keyword=清远擎天玻璃桥`);
-                    }, 1000);
+                    }, 1000); */
+                    alert('请在浏览器中打开以使用导航功能');
+                    window.open(`https://uri.amap.com/search?keyword=清远擎天玻璃桥`);
+
                 } else if (isIOS) {
-                    alert('尝试打开iOS高德地图102...');
+                    alert('尝试打开iOS高德地图103...');
                     window.location.href = `iosamap://poi?sourceApplication=appname&name=${destination}`;
                 } else if (isAndroid) {
-                    alert('尝试打开Android高德地图102...');
+                    alert('尝试打开Android高德地图103...');
                     window.open()
                     window.location.href = `amapuri://route/plan/?sourceApplication=mhc&dlat=23.69781&dlon=113.03027&dname=${destination}&dev=0&t=0`;
                 } else {
-                    alert('尝试打开网页版高德地图102...');
+                    alert('尝试打开网页版高德地图103...');
                     window.open(`https://uri.amap.com/search?keyword=${destination}`);
                 }
             } catch (error) {

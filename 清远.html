@@ -496,18 +496,26 @@
             try {
                 // 根据当前活动的日期选择导航目的地
                 const activeDay = document.querySelector('.day-tab.active').getAttribute('data-day');
-
                 let destination = activeDay === '1' ? '清远擎天玻璃桥' : '清远湟川三峡';
-
-                if (isIOS) {
-                    alert('尝试打开iOS高德地图77...');
+                const isWeixin = /MicroMessenger/i.test(navigator.userAgent);
+                c.console.log('isWeixin:' + isWeixin);
+                c.console.log('destination:' + destination);
+                c.console.log('activeDay:' + activeDay);
+                
+                if (isWeixin) {
+                    // 微信环境下使用微信JS-SDK唤起高德地图
+                    wx.miniProgram.navigateTo({
+                        url: `/pages/map/map?destination=${encodeURIComponent(destination)}`
+                    });
+                } else if (isIOS) {
+                    alert('尝试打开iOS高德地图101...');
                     window.location.href = `iosamap://poi?sourceApplication=appname&name=${destination}`;
                 } else if (isAndroid) {
-                    alert('尝试打开Android高德地图88...');
-                    window.open(`https://uri.amap.com/search?keyword=${destination}`);
-                    // window.open(`amapuri://route/plan/?sourceApplication=mhc&dlat=23.69781&dlon=113.03027&dname=${destination}&dev=0&t=0`)
+                    alert('尝试打开Android高德地图101...');
+                    window.open()
+                    window.location.href = `amapuri://route/plan/?sourceApplication=mhc&dlat=23.69781&dlon=113.03027&dname=${destination}&dev=0&t=0`;
                 } else {
-                    alert('尝试打开网页版高德地图77...');
+                    alert('尝试打开网页版高德地图101...');
                     window.open(`https://uri.amap.com/search?keyword=${destination}`);
                 }
             } catch (error) {

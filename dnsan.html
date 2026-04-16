@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>惠州大南山两日游攻略 - 2026年5月2日-3日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 16px;
+            padding-bottom: 80px;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .header .date {
+            color: #666;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #ddd;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 2px solid #fff;
+        }
+
+        .timeline-item.day2::before {
+            background: #764ba2;
+        }
+
+        .timeline-time {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 4px;
+        }
+
+        .timeline-title {
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .timeline-desc {
+            font-size: 14px;
+            color: #666;
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+
+        .hotel-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 14px;
+            margin-top: 12px;
+        }
+
+        .hotel-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .hotel-address {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .hotel-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .tag {
+            background: #667eea;
+            color: #fff;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 20px;
+        }
+
+        .tag.sea {
+            background: #00d2d3;
+        }
+
+        .tag.mountain {
+            background: #54a054;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: transform 0.2s;
+        }
+
+        .nav-btn:active {
+            transform: scale(0.96);
+        }
+
+        .nav-btn.secondary {
+            background: #fff;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .poi-list {
+            margin-top: 12px;
+        }
+
+        .poi-item {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 10px;
+        }
+
+        .poi-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .poi-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .poi-desc {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .tips {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+            border-radius: 12px;
+            padding: 14px;
+        }
+
+        .tips-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+
+        .tips-list {
+            list-style: none;
+            font-size: 13px;
+            color: #856404;
+        }
+
+        .tips-list li {
+            margin-bottom: 4px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .tips-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        .quick-nav {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 30px;
+            padding: 8px 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .quick-nav a {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 13px;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .quick-nav a:active {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部标题 -->
+        <div class="header">
+            <h1>⛰️ 惠州大南山两日游</h1>
+            <div class="date">2026年5月2日 - 5月3日（周六-周日）</div>
+            <div style="margin-top: 12px;">
+                <a href="https://uri.amap.com/marker?name=大南山&position=114.903575,22.923995&src=pcweb&callnative=1" class="nav-btn" style="font-size: 13px;">
+                    📍 导航到大南山
+                </a>
+            </div>
+        </div>
+
+        <!-- 第一天行程 -->
+        <div class="card">
+            <div class="card-title">
+                <span>🌅</span>
+                第一天（5月2日 周六）
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">上午</div>
+                    <div class="timeline-title">出发前往大南山</div>
+                    <div class="timeline-desc">
+                        从深圳出发，预计车程约1.5-2小时抵达大南山山脚<br>
+                        <a href="https://uri.amap.com/navigation?to=114.903575,22.923995,大南山&callnative=1" class="nav-btn secondary" style="margin-top: 8px;">
+                            🗺️ 导航到大南山
+                        </a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">10:00 - 16:00</div>
+                    <div class="timeline-title">徒步登山</div>
+                    <div class="timeline-desc">
+                        沿着登山步道攀登大南山，欣赏山峦连绵、云海风车的壮丽景色。大南山海拔约900米，是惠东县最高峰。
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">16:00 - 17:30</div>
+                    <div class="timeline-title">山顶观日落</div>
+                    <div class="timeline-desc">
+                        在山顶观赏壮观的日落晚霞，俯瞰群山
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">傍晚</div>
+                    <div class="timeline-title">入住山下住宿</div>
+                    <div class="hotel-card">
+                        <div class="hotel-name">🏕️ 惠东趣野大南山露营地</div>
+                        <div class="hotel-address">📍 惠州市惠东县多祝镇守望村中塘小组相告路段</div>
+                        <div class="hotel-tags">
+                            <span class="tag mountain">⛰️ 露营体验</span>
+                            <span class="tag">靠近大南山</span>
+                        </div>
+                        <div class="btn-group">
+                            <a href="https://uri.amap.com/navigation?to=114.903575,22.923995,惠东趣野大南山露营地&callnative=1" class="nav-btn">🗺️ 导航前往</a>
+                        </div>
+                    </div>
+                    <div class="hotel-card" style="margin-top: 12px;">
+                        <div class="hotel-name">🏠 周边农家乐/民宿推荐</div>
+                        <div class="hotel-desc" style="font-size: 13px; color: #666; margin-top: 6px;">
+                            山下有多家农家乐可提供住宿和餐饮服务，建议提前联系预订
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">18:00 - 20:00</div>
+                    <div class="timeline-title">营地晚餐 & 星空</div>
+                    <div class="timeline-desc">
+                        营地晚餐，夜晚观星，山顶光污染少，是观星的绝佳位置
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二天行程 -->
+        <div class="card">
+            <div class="card-title">
+                <span>🌄</span>
+                第二天（5月3日 周日）
+            </div>
+            <div class="timeline">
+                <div class="timeline-item day2">
+                    <div class="timeline-time">清晨</div>
+                    <div class="timeline-title">山顶观日出（可选）</div>
+                    <div class="timeline-desc">
+                        早起观看日出云海
+                    </div>
+                </div>
+                <div class="timeline-item day2">
+                    <div class="timeline-time">08:00 - 09:00</div>
+                    <div class="timeline-title">营地早餐</div>
+                    <div class="timeline-desc">
+                        享用简单早餐
+                    </div>
+                </div>
+                <div class="timeline-item day2">
+                    <div class="timeline-time">09:00 - 12:00</div>
+                    <div class="timeline-title">下山或周边游玩</div>
+                    <div class="timeline-desc">
+                        下山返回，或在周边继续游玩
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 周边景点推荐 -->
+        <div class="card">
+            <div class="card-title">
+                <span>🗺️</span>
+                周边景点推荐
+            </div>
+            <div class="poi-list">
+                <div class="poi-item">
+                    <div class="poi-name">🌊 巽寮湾风景区</div>
+                    <div class="poi-desc">距离大南山约40分钟车程，优质滨海度假区，沙滩细腻，海水清澈</div>
+                    <a href="https://uri.amap.com/navigation?to=114.903575,22.923995,巽寮湾风景区&callnative=1" class="nav-btn secondary" style="font-size: 12px; padding: 6px 12px;">
+                        🗺️ 导航
+                    </a>
+                </div>
+                <div class="poi-item">
+                    <div class="poi-name">🏖️ 双月湾</div>
+                    <div class="poi-desc">距离大南山约1小时车程，由两个半月形海湾组成，风景壮观，适合看日落</div>
+                    <a href="https://uri.amap.com/navigation?to=114.903575,22.923995,双月湾&callnative=1" class="nav-btn secondary" style="font-size: 12px; padding: 6px 12px;">
+                        🗺️ 导航
+                    </a>
+                </div>
+                <div class="poi-item">
+                    <div class="poi-name">⛩️ 九龙峰旅游区</div>
+                    <div class="poi-desc">距离大南山约30分钟车程，集自然风光与宗教文化于一体</div>
+                    <a href="https://uri.amap.com/navigation?to=115.063773,23.027999,九龙峰旅游区&callnative=1" class="nav-btn secondary" style="font-size: 12px; padding: 6px 12px;">
+                        🗺️ 导航
+                    </a>
+                </div>
+                <div class="poi-item">
+                    <div class="poi-name">🐢 惠东海龟国家级自然保护区</div>
+                    <div class="poi-desc">距离大南山约1小时车程，了解海龟保护，观赏可爱海龟</div>
+                    <a href="https://uri.amap.com/navigation?to=114.903575,22.923995,惠东海龟国家级自然保护区&callnative=1" class="nav-btn secondary" style="font-size: 12px; padding: 6px 12px;">
+                        🗺️ 导航
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 实用Tips -->
+        <div class="card">
+            <div class="card-title">
+                <span>💡</span>
+                实用Tips
+            </div>
+            <div class="tips">
+                <div class="tips-title">行前准备</div>
+                <ul class="tips-list">
+                    <li>穿着舒适的运动鞋/登山鞋</li>
+                    <li>携带防晒用品、帽子、墨镜</li>
+                    <li>准备足够的饮用水和干粮</li>
+                    <li>山顶温差大，建议带一件外套</li>
+                    <li>携带移动电源、垃圾袋</li>
+                    <li>露营需准备帐篷、睡袋、防潮垫</li>
+                    <li>提前查看天气预报，避免阴雨天气</li>
+                    <li>山路部分路段较陡，注意安全</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>祝您旅途愉快！</p>
+        </div>
+    </div>
+
+    <!-- 底部快捷导航 -->
+    <div class="quick-nav">
+        <a href="https://uri.amap.com/navigation?to=114.903575,22.923995,大南山&callnative=1">
+            🗺️ 导航
+        </a>
+        <a href="tel:">
+            📞 联系
+        </a>
+    </div>
+</body>
+</html>

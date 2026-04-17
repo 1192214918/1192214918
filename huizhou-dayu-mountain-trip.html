@@ -1527,55 +1527,94 @@
     </footer>
 
     <script>
-        // App跳转通用函数
-        function openAmapNavi(keyword) {
-            var encodedKeyword = encodeURIComponent(keyword);
-            var url = 'androidamap://navi?keyword=' + encodedKeyword + '&city=惠州&src=uri';
-            var iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.src = url;
-            document.body.appendChild(iframe);
-            setTimeout(function() {
-                document.body.removeChild(iframe);
-            }, 1000);
-            // 如果1秒后还在页面，说明app没有打开，可以尝试打开应用市场
-            setTimeout(function() {
-                // 尝试下载高德地图
-                window.location.href = 'https://amappc://ds-download';
-            }, 1500);
+        // 检测是否是微信/QQ等内置浏览器
+        function isEmbeddedBrowser() {
+            var ua = navigator.userAgent.toLowerCase();
+            return (ua.indexOf('micromessenger') > -1 || ua.indexOf('qq/') > -1 || ua.indexOf('weibo') > -1);
         }
 
-        function openAmapSearch(keyword) {
-            var encodedKeyword = encodeURIComponent(keyword);
-            var url = 'androidamap://keywordSearch?keywords=' + encodedKeyword + '&city=惠州';
-            var iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.src = url;
-            document.body.appendChild(iframe);
+        // 显示提示 Toast
+        function showToast(message, duration) {
+            duration = duration || 2500;
+            var existing = document.getElementById('app-toast');
+            if (existing) document.body.removeChild(existing);
+
+            var toast = document.createElement('div');
+            toast.id = 'app-toast';
+            toast.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.85);color:#fff;padding:20px 36px;border-radius:12px;font-size:15px;z-index:99999;text-align:center;max-width:300px;line-height:1.5;box-shadow:0 4px 20px rgba(0,0,0,0.3);';
+            toast.innerHTML = message;
+            document.body.appendChild(toast);
             setTimeout(function() {
-                document.body.removeChild(iframe);
-            }, 1000);
+                var t = document.getElementById('app-toast');
+                if (t) {
+                    t.style.opacity = '0';
+                    t.style.transition = 'opacity 0.3s';
+                    setTimeout(function() { if (t.parentNode) t.parentNode.removeChild(t); }, 300);
+                }
+            }, duration);
+        }
+
+        // 高德地图跳转
+        function openAmapNavi(keyword) {
+            // 检测环境
+            if (isEmbeddedBrowser()) {
+                showToast('请在浏览器中打开此页面<br>然后点击导航按钮');
+                return;
+            }
+
+            var encodedKeyword = encodeURIComponent(keyword);
+            var encodedCity = encodeURIComponent('惠州');
+
+            // 显示提示
+            showToast('正在打开高德地图...');
+
+            // 使用iframe尝试唤醒App
+            var ifr = document.createElement('iframe');
+            ifr.style.cssText = 'width:1px;height:1px;position:fixed;top:-10px;left:-10px;opacity:0;border:none;';
+            ifr.src = 'androidamap://navi?keyword=' + encodedKeyword + '&city=' + encodedCity + '&src=uri&dev=1';
+            document.body.appendChild(ifr);
+
+            // 清理iframe
+            setTimeout(function() {
+                if (ifr.parentNode) ifr.parentNode.removeChild(ifr);
+            }, 3000);
+
+            // 3秒后如果还在此页面，提示用户
+            setTimeout(function() {
+                // 可选：打开网页版高德地图
+                // window.open('https://ditu.amap.com/search?query=' + encodedKeyword, '_blank');
+            }, 3000);
         }
 
         // 两步路跳转
         function openTwoBuLu(type) {
+            if (isEmbeddedBrowser()) {
+                showToast('请在浏览器中打开此页面<br>然后点击查看轨迹');
+                return;
+            }
+
+            showToast('正在打开两步路...');
+
             if (type === 'track') {
-                // 两步路轨迹页面
-                var url = 'twobuluo://track/detail?wp=114.903575,22.923995&wn=' + encodeURIComponent('大南山精华线');
-                var iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                iframe.src = url;
-                document.body.appendChild(iframe);
+                // 使用iframe尝试唤醒两步路App
+                var ifr = document.createElement('iframe');
+                ifr.style.cssText = 'width:1px;height:1px;position:fixed;top:-10px;left:-10px;opacity:0;border:none;';
+                // 两步路App协议
+                ifr.src = 'twobuluo://track/detail?wp=114.903575,22.923995&wn=' + encodeURIComponent('大南山精华线');
+                document.body.appendChild(ifr);
+
+                // 清理iframe
                 setTimeout(function() {
-                    document.body.removeChild(iframe);
-                }, 1000);
-                // Fallback到网页版
+                    if (ifr.parentNode) ifr.parentNode.removeChild(ifr);
+                }, 3000);
+
+                // 备用：3秒后打开网页版
                 setTimeout(function() {
-                    window.location.href = 'https://www.2buluuluo.com/track/detail?wp=114.903575,22.923995&wn=%E5%A4%A7%E5%8D%97%E5%B1%B1%E7%B2%BE%E5%8D%8E%E7%BA%BF';
-                }, 1500);
+                    // 如果App没有打开，可以在这里打开网页版
+                    // window.open('https://www.2buluuluo.com/track/detail?wp=114.903575,22.923995&wn=%E5%A4%A7%E5%8D%97%E5%B1%B1%E7%B2%BE%E5%8D%8E%E7%BA%BF', '_blank');
+                }, 3000);
             } else {
-                // 两步路首页
-                window.location.href = 'https://www.2buluuluo.com/';
+                window.open('https://www.2buluuluo.com/', '_blank');
             }
         }
 

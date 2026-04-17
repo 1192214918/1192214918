@@ -1140,7 +1140,7 @@
                     </span>
                 </div>
                 <div class="action-buttons">
-                    <a href="javascript:void(0);" class="btn btn-primary" onclick="openAmapNavi('惠州大南山')">
+                    <a href="javascript:void(0);" class="btn btn-primary" onclick="openAmapNavi('大南山', 22.923995, 114.903575)">
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                         </svg>
@@ -1333,7 +1333,7 @@
                     <p>巽寮湾是广东最著名的海滨度假区之一，拥有洁白的沙滩和清澈的海水。可以玩沙踏浪、游泳戏水，或品尝新鲜海鲜。</p>
                 </div>
                 <div style="margin-top: 16px;">
-                    <a href="javascript:void(0);" class="btn btn-primary" style="width: 100%;" onclick="openAmapNavi('巽寮湾沙滩')">
+                    <a href="javascript:void(0);" class="btn btn-primary" style="width: 100%;" onclick="openAmapNavi('巽寮湾', 22.679844, 114.756471)">
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                         </svg>
@@ -1359,7 +1359,7 @@
                     <p>双月湾因形状似两轮新月而得名，由大亚湾和红海湾相邻而成。海水清澈，沙滩细腻，是观赏日落的绝佳地点。</p>
                 </div>
                 <div style="margin-top: 16px;">
-                    <a href="javascript:void(0);" class="btn btn-primary" style="width: 100%;" onclick="openAmapNavi('双月湾沙滩')">
+                    <a href="javascript:void(0);" class="btn btn-primary" style="width: 100%;" onclick="openAmapNavi('双月湾', 22.580455, 114.894837)">
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                         </svg>
@@ -1396,7 +1396,7 @@
                 <div class="section-label">导航工具</div>
                 <h2 class="section-title">地图与轨迹链接</h2>
             </div>
-            <div class="nav-link" href="javascript:void(0);" onclick="openAmapNavi('惠东县大南山')">
+            <div class="nav-link" href="javascript:void(0);" onclick="openAmapNavi('大南山', 22.923995, 114.903575)">
                 <div class="nav-link-icon amap">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -1412,7 +1412,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="nav-link" href="javascript:void(0);" onclick="openAmapNavi('巽寮湾沙滩')">
+            <div class="nav-link" href="javascript:void(0);" onclick="openAmapNavi('巽寮湾', 22.679844, 114.756471)">
                 <div class="nav-link-icon amap">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M17.5 19H9a7 7 0 110-14h8.5"/>
@@ -1429,7 +1429,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="nav-link" href="javascript:void(0);" onclick="openAmapNavi('双月湾沙滩')">
+            <div class="nav-link" href="javascript:void(0);" onclick="openAmapNavi('双月湾', 22.580455, 114.894837)">
                 <div class="nav-link-icon amap">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M17.5 19H9a7 7 0 110-14h8.5"/>
@@ -1554,24 +1554,31 @@
             }, duration);
         }
 
-        // 高德地图跳转
-        function openAmapNavi(keyword) {
+        // 高德地图跳转 - 使用经纬度坐标精确定位
+        function openAmapNavi(keyword, lat, lon) {
             // 检测环境
             if (isEmbeddedBrowser()) {
                 showToast('请在浏览器中打开此页面<br>然后点击导航按钮');
                 return;
             }
 
-            var encodedKeyword = encodeURIComponent(keyword);
-            var encodedCity = encodeURIComponent('惠州');
-
             // 显示提示
             showToast('正在打开高德地图...');
+
+            // 根据不同的目的地构建导航URL
+            var naviUrl;
+            if (lat && lon) {
+                // 使用经纬度导航（更精确）
+                naviUrl = 'androidamap://navi?sourceApplication=大南山徒步&poiname=' + encodeURIComponent(keyword) + '&lat=' + lat + '&lon=' + lon + '&dev=1&style=2';
+            } else {
+                // 使用关键词搜索
+                naviUrl = 'androidamap://navi?sourceApplication=大南山徒步&keyword=' + encodeURIComponent(keyword) + '&city=惠州&src=uri';
+            }
 
             // 使用iframe尝试唤醒App
             var ifr = document.createElement('iframe');
             ifr.style.cssText = 'width:1px;height:1px;position:fixed;top:-10px;left:-10px;opacity:0;border:none;';
-            ifr.src = 'androidamap://navi?keyword=' + encodedKeyword + '&city=' + encodedCity + '&src=uri&dev=1';
+            ifr.src = naviUrl;
             document.body.appendChild(ifr);
 
             // 清理iframe
@@ -1579,10 +1586,9 @@
                 if (ifr.parentNode) ifr.parentNode.removeChild(ifr);
             }, 3000);
 
-            // 3秒后如果还在此页面，提示用户
+            // 3秒后可打开网页版高德地图
             setTimeout(function() {
-                // 可选：打开网页版高德地图
-                // window.open('https://ditu.amap.com/search?query=' + encodedKeyword, '_blank');
+                // window.open('https://ditu.amap.com/search?query=' + encodeURIComponent(keyword), '_blank');
             }, 3000);
         }
 
@@ -1596,25 +1602,24 @@
             showToast('正在打开两步路...');
 
             if (type === 'track') {
-                // 使用iframe尝试唤醒两步路App
+                // 使用iframe尝试唤醒两步路App（使用正确的协议格式）
                 var ifr = document.createElement('iframe');
                 ifr.style.cssText = 'width:1px;height:1px;position:fixed;top:-10px;left:-10px;opacity:0;border:none;';
-                // 两步路App协议
-                ifr.src = 'twobuluo://track/detail?wp=114.903575,22.923995&wn=' + encodeURIComponent('大南山精华线');
+                // 两步路App协议 - 使用正确的URL Scheme
+                ifr.src = 'twobuluo://route/99906';
                 document.body.appendChild(ifr);
 
                 // 清理iframe
                 setTimeout(function() {
                     if (ifr.parentNode) ifr.parentNode.removeChild(ifr);
-                }, 3000);
+                }, 1500);
 
-                // 备用：3秒后打开网页版
+                // 1.5秒后打开两步路网页版（使用用户提供的正确链接）
                 setTimeout(function() {
-                    // 如果App没有打开，可以在这里打开网页版
-                    // window.open('https://www.2buluuluo.com/track/detail?wp=114.903575,22.923995&wn=%E5%A4%A7%E5%8D%97%E5%B1%B1%E7%B2%BE%E5%8D%8E%E7%BA%BF', '_blank');
-                }, 3000);
+                    window.open('https://www.2bulu.com/mc/route/detail?id=99906', '_blank');
+                }, 1500);
             } else {
-                window.open('https://www.2buluuluo.com/', '_blank');
+                window.open('https://www.2bulu.com/', '_blank');
             }
         }
 

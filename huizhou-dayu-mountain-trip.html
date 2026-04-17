@@ -1144,7 +1144,7 @@
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                         </svg>
-                        高德地图导航至大南山
+                        高德地图查看大南山位置
                     </a>
                     <a href="javascript:void(0);" class="btn btn-secondary" onclick="openTwoBuLu('track')">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1337,7 +1337,7 @@
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                         </svg>
-                        高德地图导航至巽寮湾
+                        高德地图查看巽寮湾位置
                     </a>
                 </div>
             </div>
@@ -1363,7 +1363,7 @@
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                         </svg>
-                        高德地图导航至双月湾
+                        高德地图查看双月湾位置
                     </a>
                 </div>
             </div>
@@ -1554,7 +1554,7 @@
             }, duration);
         }
 
-        // 高德地图跳转 - 使用经纬度坐标精确定位
+        // 高德地图跳转 - 打开目的地概览页
         function openAmapNavi(keyword, lat, lon) {
             // 检测环境
             if (isEmbeddedBrowser()) {
@@ -1565,30 +1565,25 @@
             // 显示提示
             showToast('正在打开高德地图...');
 
-            // 根据不同的目的地构建导航URL
-            var naviUrl;
+            // 构建高德地图详情页URL
+            var mapUrl;
             if (lat && lon) {
-                // 使用经纬度导航（更精确）
-                naviUrl = 'androidamap://navi?sourceApplication=大南山徒步&poiname=' + encodeURIComponent(keyword) + '&lat=' + lat + '&lon=' + lon + '&dev=1&style=2';
+                // 使用经纬度打开POI详情页
+                mapUrl = 'androidamap://viewMap?sourceApplication=大南山徒步&poiname=' + encodeURIComponent(keyword) + '&lat=' + lat + '&lon=' + lon + '&dev=1';
             } else {
                 // 使用关键词搜索
-                naviUrl = 'androidamap://navi?sourceApplication=大南山徒步&keyword=' + encodeURIComponent(keyword) + '&city=惠州&src=uri';
+                mapUrl = 'androidamap://search?keyword=' + encodeURIComponent(keyword) + '&city=惠州';
             }
 
             // 使用iframe尝试唤醒App
             var ifr = document.createElement('iframe');
             ifr.style.cssText = 'width:1px;height:1px;position:fixed;top:-10px;left:-10px;opacity:0;border:none;';
-            ifr.src = naviUrl;
+            ifr.src = mapUrl;
             document.body.appendChild(ifr);
 
             // 清理iframe
             setTimeout(function() {
                 if (ifr.parentNode) ifr.parentNode.removeChild(ifr);
-            }, 3000);
-
-            // 3秒后可打开网页版高德地图
-            setTimeout(function() {
-                // window.open('https://ditu.amap.com/search?query=' + encodeURIComponent(keyword), '_blank');
             }, 3000);
         }
 
@@ -1602,24 +1597,56 @@
             showToast('正在打开两步路...');
 
             if (type === 'track') {
-                // 使用iframe尝试唤醒两步路App（使用正确的协议格式）
+                // 尝试多种两步路App协议格式
+                var schemes = [
+                    'twobuluo://mc/route/detail?id=99906',
+                    'twobuluo://route/99906',
+                    'twobuluo://track/detail?id=99906'
+                ];
+
+                // 依次尝试不同的协议
+                var tryScheme = function(index) {
+                    if (index >= schemes.length) {
+                        // 所有协议都失败了，显示提示
+                        showToast('请安装两步路App查看轨迹');
+                        return;
+                    }
+
+                    var ifr = document.createElement('iframe');
+                    ifr.style.cssText = 'width:1px;height:1px;position:fixed;top:-10px;left:-10px;opacity:0;border:none;';
+                    ifr.src = schemes[index];
+                    document.body.appendChild(ifr);
+
+                    // 给App 1秒响应时间
+                    setTimeout(function() {
+                        if (ifr.parentNode) ifr.parentNode.removeChild(ifr);
+                        // 如果失败了，尝试下一个协议
+                        if (document.hidden || index === schemes.length - 1) {
+                            // 页面没有被隐藏，说明App没有打开
+                        }
+                    }, 1000);
+
+                    // 检查页面是否被激活（App被打开了）
+                    setTimeout(function() {
+                        if (!document.hidden) {
+                            // App已经打开，页面被隐藏了
+                            return;
+                        }
+                        // 尝试下一个协议
+                        tryScheme(index + 1);
+                    }, 1200);
+                };
+
+                tryScheme(0);
+            } else {
+                // 两步路首页
                 var ifr = document.createElement('iframe');
                 ifr.style.cssText = 'width:1px;height:1px;position:fixed;top:-10px;left:-10px;opacity:0;border:none;';
-                // 两步路App协议 - 使用正确的URL Scheme
-                ifr.src = 'twobuluo://route/99906';
+                ifr.src = 'twobuluo://';
                 document.body.appendChild(ifr);
-
-                // 清理iframe
                 setTimeout(function() {
                     if (ifr.parentNode) ifr.parentNode.removeChild(ifr);
                 }, 1500);
-
-                // 1.5秒后打开两步路网页版（使用用户提供的正确链接）
-                setTimeout(function() {
-                    window.open('https://www.2bulu.com/mc/route/detail?id=99906', '_blank');
-                }, 1500);
-            } else {
-                window.open('https://www.2bulu.com/', '_blank');
             }
         }
 

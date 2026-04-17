@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>惠州大南山徒步之旅 | 5月2日-3日行程规划</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d5a3d;
+            --primary-light: #4a7c5c;
+            --primary-dark: #1a3d28;
+            --accent: #c9a962;
+            --accent-light: #e8d5a3;
+            --bg-cream: #faf8f3;
+            --bg-warm: #f5f0e6;
+            --text-dark: #1a1a18;
+            --text-body: #4a4a42;
+            --text-light: #7a7a6c;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 20px rgba(45, 90, 61, 0.08);
+            --shadow-hover: 0 8px 32px rgba(45, 90, 61, 0.15);
+            --border: rgba(45, 90, 61, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-body);
+            line-height: 1.7;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 60px 24px 40px;
+            background: linear-gradient(165deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(201, 169, 98, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(to top, var(--bg-cream), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
+            color: var(--accent-light);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            animation: fadeSlideUp 0.8s ease-out;
+        }
+
+        .hero-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(32px, 8vw, 48px);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            animation: fadeSlideUp 0.8s ease-out 0.1s both;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 32px;
+            animation: fadeSlideUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            animation: fadeSlideUp 0.8s ease-out 0.3s both;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: rgba(255,255,255,0.9);
+            font-size: 14px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .meta-item svg {
+            width: 18px;
+            height: 18px;
+            color: var(--accent);
+        }
+
+        .mountain-silhouette {
+            position: absolute;
+            bottom: 80px;
+            left: 0;
+            right: 0;
+            height: 200px;
+            z-index: 1;
+            opacity: 0.15;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 48px 0;
+        }
+
+        .section-header {
+            margin-bottom: 28px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 20px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 14px;
+            color: #fff;
+        }
+
+        .card-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .card-icon.accent {
+            background: linear-gradient(135deg, var(--accent), #d4b876);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .card-subtitle {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .card-content {
+            font-size: 15px;
+            color: var(--text-body);
+        }
+
+        .card-content p {
+            margin-bottom: 12px;
+        }
+
+        .card-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -24px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            background: var(--card-bg);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-dot.active {
+            background: var(--primary);
+            box-shadow: 0 0 0 4px rgba(45, 90, 61, 0.2);
+        }
+
+        .timeline-dot.accent {
+            border-color: var(--accent);
+        }
+
+        .timeline-dot.accent.active {
+            background: var(--accent);
+        }
+
+        .timeline-time {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .timeline-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .timeline-content p {
+            font-size: 14px;
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        /* Route Section */
+        .route-card {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            border-radius: 24px;
+            padding: 28px;
+            margin-bottom: 16px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .route-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(201,169,98,0.2), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .route-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .route-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .route-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--accent);
+        }
+
+        .route-title-group {
+            flex: 1;
+        }
+
+        .route-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .route-subtitle {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .route-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .route-stat {
+            text-align: center;
+            padding: 16px 8px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 14px;
+            backdrop-filter: blur(10px);
+        }
+
+        .route-stat-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent-light);
+            margin-bottom: 4px;
+        }
+
+        .route-stat-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 1px;
+        }
+
+        .route-description {
+            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 12px;
+            border-left: 3px solid var(--accent);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 24px;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #d4b876);
+            color: var(--text-dark);
+            box-shadow: 0 4px 16px rgba(201, 169, 98, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(201, 169, 98, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Info List */
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .info-list li:first-child {
+            padding-top: 0;
+        }
+
+        .info-icon {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-warm);
+            border-radius: 8px;
+            color: var(--primary);
+        }
+
+        .info-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .info-label {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 2px;
+        }
+
+        .info-value {
+            font-size: 15px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: var(--bg-warm);
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--text-body);
+        }
+
+        .tag svg {
+            width: 14px;
+            height: 14px;
+            color: var(--primary);
+        }
+
+        /* Accommodation Cards */
+        .accommodation-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .accommodation-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            display: flex;
+            gap: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .accommodation-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .accommodation-icon {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .accommodation-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .accommodation-info {
+            flex: 1;
+        }
+
+        .accommodation-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .accommodation-type {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .accommodation-distance {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: var(--primary);
+            background: rgba(45, 90, 61, 0.08);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .accommodation-distance svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* Navigation Links */
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: var(--card-bg);
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
+        }
+
+        .nav-link:last-child {
+            margin-bottom: 0;
+        }
+
+        .nav-link:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .nav-link-icon {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        .nav-link-icon.amap {
+            background: linear-gradient(135deg, #1ba8e4, #0d8ecf);
+        }
+
+        .nav-link-icon.twobu {
+            background: linear-gradient(135deg, #4CAF50, #388E3C);
+        }
+
+        .nav-link-icon svg {
+            width: 22px;
+            height: 22px;
+            color: #fff;
+        }
+
+        .nav-link-text {
+            flex: 1;
+        }
+
+        .nav-link-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .nav-link-desc {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .nav-link-arrow {
+            color: var(--text-light);
+        }
+
+        .nav-link-arrow svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border), transparent);
+            margin: 0 -20px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 48px 20px;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            color: var(--primary);
+            font-family: 'Noto Serif SC', serif;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .footer-logo svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Animations */
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeSlideUp 0.6s ease-out forwards;
+        }
+
+        /* Day Badge */
+        .day-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .day-badge.day-2 {
+            background: var(--accent);
+            color: var(--text-dark);
+        }
+
+        /* Travel Tips */
+        .tips-card {
+            background: linear-gradient(135deg, var(--bg-warm), var(--bg-cream));
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .tips-card h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tips-card h4 svg {
+            width: 18px;
+            height: 18px;
+            color: var(--accent);
+        }
+
+        .tips-card ul {
+            list-style: none;
+        }
+
+        .tips-card li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-body);
+        }
+
+        .tips-card li:last-child {
+            margin-bottom: 0;
+        }
+
+        .tips-card li::before {
+            content: '•';
+            position: absolute;
+            left: 6px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 50px 20px 35px;
+            }
+
+            .hero-meta {
+                gap: 10px;
+            }
+
+            .meta-item {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+
+            section {
+                padding: 36px 0;
+            }
+
+            .card {
+                padding: 20px;
+                border-radius: 16px;
+            }
+
+            .route-card {
+                padding: 22px;
+                border-radius: 20px;
+            }
+
+            .route-stats {
+                gap: 8px;
+            }
+
+            .route-stat {
+                padding: 12px 6px;
+            }
+
+            .route-stat-value {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                户外徒步 · 广东惠州
+            </div>
+            <h1>惠州大南山<br>徒步之旅</h1>
+            <p class="hero-subtitle">5月2日 - 5月3日 · 两天一夜行程规划</p>
+            <div class="hero-meta">
+                <div class="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                    2天行程
+                </div>
+                <div class="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    惠东县
+                </div>
+                <div class="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 010 7.75"/>
+                    </svg>
+                    精华路线
+                </div>
+            </div>
+        </div>
+        <svg class="mountain-silhouette" viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path d="M0,200 L0,150 L100,100 L200,130 L300,60 L400,100 L500,40 L600,90 L700,50 L800,80 L900,30 L1000,70 L1100,45 L1200,80 L1200,200 Z" fill="rgba(255,255,255,0.3)"/>
+            <path d="M0,200 L0,170 L150,120 L250,150 L350,90 L450,130 L550,70 L650,110 L750,60 L850,100 L950,50 L1050,90 L1150,65 L1200,90 L1200,200 Z" fill="rgba(255,255,255,0.2)"/>
+        </svg>
+    </header>
+
+    <main class="container">
+
+        <!-- Trip Overview -->
+        <section>
+            <div class="section-header">
+                <div class="section-label">行程概览</div>
+                <h2 class="section-title">行程规划总览</h2>
+            </div>
+            <div class="card">
+                <ul class="info-list">
+                    <li>
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <div class="info-label">出发日期</div>
+                            <div class="info-value">2025年5月2日（周五）</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <div class="info-label">出发地</div>
+                            <div class="info-value">广州从化</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 17H4a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2h-1"/>
+                                <polygon points="12 15 17 21 7 21 12 15"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <div class="info-label">出行方式</div>
+                            <div class="info-value">高铁</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <div class="info-label">目的地</div>
+                            <div class="info-value">惠东县大南山</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Day 1 Itinerary -->
+        <section>
+            <div class="day-badge">Day 1 · 5月2日</div>
+            <div class="section-header">
+                <div class="section-label">第一天</div>
+                <h2 class="section-title">抵达与适应</h2>
+            </div>
+            <div class="card">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <div class="timeline-time">上午</div>
+                        <div class="timeline-content">
+                            <h4>广州从化 → 惠州</h4>
+                            <p>乘坐高铁从广州东站/广州南站出发，约1-1.5小时抵达惠州南站或惠东站</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <div class="timeline-time">中午</div>
+                        <div class="timeline-content">
+                            <h4>抵达大南山区域</h4>
+                            <p>前往预订的民宿办理入住，品尝当地农家菜</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <div class="timeline-time">下午</div>
+                        <div class="timeline-content">
+                            <h4>周边休闲游玩</h4>
+                            <p>可前往大王庙附近逛逛，或在民宿周边欣赏山景，感受乡村气息</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot accent"></div>
+                        <div class="timeline-time">晚上</div>
+                        <div class="timeline-content">
+                            <h4>住宿休息</h4>
+                            <p>品尝当地特色美食，早点休息，为第二天徒步储备体力</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Day 2 Itinerary -->
+        <section>
+            <div class="day-badge day-2">Day 2 · 5月3日</div>
+            <div class="section-header">
+                <div class="section-label">第二天</div>
+                <h2 class="section-title">大南山精华线徒步</h2>
+            </div>
+            <div class="card">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <div class="timeline-time">05:30-06:00</div>
+                        <div class="timeline-content">
+                            <h4>清晨起床出发</h4>
+                            <p>早起洗漱，享用早餐后出发前往徒步起点</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <div class="timeline-time">06:00-09:00</div>
+                        <div class="timeline-content">
+                            <h4>上山阶段</h4>
+                            <p>从大王庙附近出发，沿着山脊线向上攀升，沿途欣赏壮丽的山景云海</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <div class="timeline-time">09:00-12:00</div>
+                        <div class="timeline-content">
+                            <h4>山顶精华段</h4>
+                            <p>抵达山顶区域，穿越草甸，欣赏大南山独特的山脊风光</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <div class="timeline-time">12:00-14:00</div>
+                        <div class="timeline-content">
+                            <h4>下山返程</h4>
+                            <p>原路或走环线下山，返回起点</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot accent"></div>
+                        <div class="timeline-time">下午</div>
+                        <div class="timeline-content">
+                            <h4>海边游玩 / 返程</h4>
+                            <p>可前往巽寮湾或双月湾看海，然后乘坐高铁返回广州</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Hiking Route Section -->
+        <section>
+            <div class="section-header">
+                <div class="section-label">徒步路线</div>
+                <h2 class="section-title">大南山精华线</h2>
+            </div>
+            <div class="route-card">
+                <div class="route-header">
+                    <div class="route-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <div class="route-title-group">
+                        <h3 class="route-title">大南山精华环线</h3>
+                        <p class="route-subtitle">惠东县大南山 · 广东经典徒步路线</p>
+                    </div>
+                </div>
+                <div class="route-stats">
+                    <div class="route-stat">
+                        <div class="route-stat-value">8-12</div>
+                        <div class="route-stat-label">公里</div>
+                    </div>
+                    <div class="route-stat">
+                        <div class="route-stat-value">6-8</div>
+                        <div class="route-stat-label">小时</div>
+                    </div>
+                    <div class="route-stat">
+                        <div class="route-stat-value">500+</div>
+                        <div class="route-stat-label">米爬升</div>
+                    </div>
+                </div>
+                <div class="route-description">
+                    <p>大南山精华线是广东最经典的徒步路线之一，途经大王庙、云海观赏点、高山草甸等多个精华路段。山顶视野开阔，可俯瞰整个惠东海岸线。</p>
+                </div>
+                <div class="tags" style="margin-bottom: 20px;">
+                    <span class="tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        难度适中
+                    </span>
+                    <span class="tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20"/><path d="M2 12h20"/></svg>
+                        风景绝美
+                    </span>
+                    <span class="tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                        适合有经验的徒步者
+                    </span>
+                </div>
+                <div class="action-buttons">
+                    <a href="https://restapi.amap.com/main/uri?keywords=%E6%83%A0%E4%B8%9C%E5%A4%A7%E5%8D%97%E5%B1%B1&city=%E6%83%A0%E5%B7%9E&datatype=poi&key=YOUR_KEY&output=json&page=1" class="btn btn-primary" onclick="event.preventDefault();window.location.href='androidamap://keywordSearch?keywords=惠州大南山&city=惠州'">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        高德地图导航至大南山
+                    </a>
+                    <a href="https://web.mobivm.cn/track/detail?wp=114.903575,22.923995&wn=%E5%A4%A7%E5%8D%97%E5%B1%B1%E7%B2%BE%E5%8D%8E%E7%BA%BF" class="btn btn-secondary" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20"/>
+                            <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                        </svg>
+                        两步路轨迹查看
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon accent">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title">徒步起点导航</h3>
+                        <p class="card-subtitle">大王庙停车场 / 大南山标记农庄</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <ul class="info-list">
+                        <li>
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="info-text">
+                                <div class="info-label">坐标位置</div>
+                                <div class="info-value">114.903575, 22.923995</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="info-text">
+                                <div class="info-label">地址</div>
+                                <div class="info-value">惠州市惠东县多祝镇大南山</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Accommodation Section -->
+        <section>
+            <div class="section-header">
+                <div class="section-label">住宿推荐</div>
+                <h2 class="section-title">山脚住宿选择</h2>
+            </div>
+            <p style="font-size: 14px; color: var(--text-light); margin-bottom: 20px;">以下住宿地点均距离大南山徒步起点较近，便于5月3日清晨出发</p>
+            <div class="accommodation-grid">
+                <div class="accommodation-card">
+                    <div class="accommodation-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <div class="accommodation-info">
+                        <h4 class="accommodation-name">大南山一亩三分地土鸡农家乐</h4>
+                        <p class="accommodation-type">农家乐 · 餐饮住宿一体</p>
+                        <span class="accommodation-distance">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            靠近徒步起点
+                        </span>
+                    </div>
+                </div>
+                <div class="accommodation-card">
+                    <div class="accommodation-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <div class="accommodation-info">
+                        <h4 class="accommodation-name">惠东趣野大南山露营地</h4>
+                        <p class="accommodation-type">露营地 · 帐篷/轻奢露营</p>
+                        <span class="accommodation-distance">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            距徒步起点约15分钟车程
+                        </span>
+                    </div>
+                </div>
+                <div class="accommodation-card">
+                    <div class="accommodation-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <div class="accommodation-info">
+                        <h4 class="accommodation-name">大南山山水农家院</h4>
+                        <p class="accommodation-type">农家院 · 特色民宿</p>
+                        <span class="accommodation-distance">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            距徒步起点约10分钟车程
+                        </span>
+                    </div>
+                </div>
+                <div class="accommodation-card">
+                    <div class="accommodation-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <div class="accommodation-info">
+                        <h4 class="accommodation-name">南山步云饭店</h4>
+                        <p class="accommodation-type">农家乐 · 吃饭住宿</p>
+                        <span class="accommodation-distance">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            靠近大王庙
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Nearby Attractions -->
+        <section>
+            <div class="section-header">
+                <div class="section-label">周边游玩</div>
+                <h2 class="section-title">第一天可游玩地点</h2>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20"/>
+                            <path d="M2 12h20"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title">大王庙 & 大南山区域</h3>
+                        <p class="card-subtitle">适合下午休闲游玩</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p>大王庙（又称大王爷庙）位于大南山山腰处，是当地重要的宗教文化场所。周边环境清幽，适合散步拍照，感受岭南乡村气息。傍晚时分还可欣赏到美丽的山间日落。</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- After Hiking -->
+        <section>
+            <div class="section-header">
+                <div class="section-label">徒步结束后</div>
+                <h2 class="section-title">海边游玩推荐</h2>
+            </div>
+            <p style="font-size: 14px; color: var(--text-light); margin-bottom: 20px;">徒步结束后如有时间，可前往以下海边景点，车程约1-1.5小时</p>
+
+            <div class="card" style="margin-bottom: 16px;">
+                <div class="card-header">
+                    <div class="card-icon accent">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17.5 19H9a7 7 0 110-14h8.5"/>
+                            <path d="M21 12h-6"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title">巽寮湾沙滩</h3>
+                        <p class="card-subtitle">惠东县 · 国家级滨海旅游度假区</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p>巽寮湾是广东最著名的海滨度假区之一，拥有洁白的沙滩和清澈的海水。可以玩沙踏浪、游泳戏水，或品尝新鲜海鲜。</p>
+                </div>
+                <div style="margin-top: 16px;">
+                    <a href="androidamap://navi?keyword=巽寮湾沙滩&city=惠州&src=uri" class="btn btn-primary" style="width: 100%;">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        高德地图导航至巽寮湾
+                    </a>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 16px;">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17.5 19H9a7 7 0 110-14h8.5"/>
+                            <path d="M21 12h-6"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title">双月湾沙滩</h3>
+                        <p class="card-subtitle">惠东县港口镇 · 独特双月型海湾</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p>双月湾因形状似两轮新月而得名，由大亚湾和红海湾相邻而成。海水清澈，沙滩细腻，是观赏日落的绝佳地点。</p>
+                </div>
+                <div style="margin-top: 16px;">
+                    <a href="androidamap://navi?keyword=双月湾沙滩&city=惠州&src=uri" class="btn btn-primary" style="width: 100%;">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        高德地图导航至双月湾
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon accent">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title">盐洲岛</h3>
+                        <p class="card-subtitle">惠东县黄埠镇 · 原生态海岛</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p>盐洲岛是一个保存着原生态风貌的海岛，有壮观的黑排角礁石、宁静的盐田和传统的渔村风情，适合摄影爱好者。</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Navigation Links -->
+        <section>
+            <div class="section-header">
+                <div class="section-label">导航工具</div>
+                <h2 class="section-title">地图与轨迹链接</h2>
+            </div>
+            <div class="nav-link" onclick="window.location.href='androidamap://navi?keyword=惠东县大南山&city=惠州&src=uri'">
+                <div class="nav-link-icon amap">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </div>
+                <div class="nav-link-text">
+                    <div class="nav-link-title">高德地图 · 大南山</div>
+                    <div class="nav-link-desc">点击直接跳转高德地图导航</div>
+                </div>
+                <div class="nav-link-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="nav-link" onclick="window.location.href='androidamap://navi?keyword=巽寮湾沙滩&city=惠州&src=uri'">
+                <div class="nav-link-icon amap">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.5 19H9a7 7 0 110-14h8.5"/>
+                        <path d="M21 12h-6"/>
+                    </svg>
+                </div>
+                <div class="nav-link-text">
+                    <div class="nav-link-title">高德地图 · 巽寮湾</div>
+                    <div class="nav-link-desc">点击直接跳转高德地图导航</div>
+                </div>
+                <div class="nav-link-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="nav-link" onclick="window.location.href='androidamap://navi?keyword=双月湾沙滩&city=惠州&src=uri'">
+                <div class="nav-link-icon amap">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.5 19H9a7 7 0 110-14h8.5"/>
+                        <path d="M21 12h-6"/>
+                    </svg>
+                </div>
+                <div class="nav-link-text">
+                    <div class="nav-link-title">高德地图 · 双月湾</div>
+                    <div class="nav-link-desc">点击直接跳转高德地图导航</div>
+                </div>
+                <div class="nav-link-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="nav-link" onclick="window.location.href='https://www.2buluuluo.com/'">
+                <div class="nav-link-icon twobu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M2 12h20"/>
+                        <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                    </svg>
+                </div>
+                <div class="nav-link-text">
+                    <div class="nav-link-title">两步路户外平台</div>
+                    <div class="nav-link-desc">查看大南山徒步轨迹</div>
+                </div>
+                <div class="nav-link-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Travel Tips -->
+        <section>
+            <div class="section-header">
+                <div class="section-label">温馨提示</div>
+                <h2 class="section-title">出行小贴士</h2>
+            </div>
+            <div class="tips-card">
+                <h4>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="16" x2="12" y2="12"/>
+                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                    装备建议
+                </h4>
+                <ul>
+                    <li>穿着防滑登山鞋或越野跑鞋，带备用袜子</li>
+                    <li>双肩背包（建议20-30L），装上防晒霜、帽子、墨镜</li>
+                    <li>充足的饮用水（建议2-3瓶）和补充能量零食</li>
+                    <li>登山杖、雨具（天气多变）</li>
+                    <li>个人常用药品和急救包</li>
+                </ul>
+            </div>
+            <div class="card" style="margin-top: 16px;">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title">高铁票预订提示</h3>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p>建议提前在12306官网或App预订5月2日广州至惠东/惠州南的高铁票，节假日期间票源紧张，尽量提前预订往返程。</p>
+                    <p style="margin-top: 12px;"><strong>参考车程：</strong>广州东站/广州南站 → 惠东站，约1-1.5小时</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+            </svg>
+            大南山徒步之旅
+        </div>
+        <p>祝您旅途愉快，安全出行！</p>
+        <p style="margin-top: 8px;">行程规划 · 2025年5月</p>
+    </footer>
+
+    <script>
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .route-card, .accommodation-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

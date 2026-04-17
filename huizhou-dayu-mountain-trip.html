@@ -1597,52 +1597,29 @@
             showToast('正在打开两步路...');
 
             if (type === 'track') {
-                // 尝试多种两步路App协议格式
-                var schemes = [
-                    'twobuluo://mc/route/detail?id=99906',
-                    'twobuluo://route/99906',
-                    'twobuluo://track/detail?id=99906'
-                ];
+                // 使用用户提供的正确协议格式
+                var ifr = document.createElement('iframe');
+                ifr.style.cssText = 'width:1px;height:1px;position:fixed;top:-10px;left:-10px;opacity:0;border:none;';
+                // tbulu://track/detail?trackId=轨迹ID
+                ifr.src = 'tbulu://track/detail?trackId=99906';
+                document.body.appendChild(ifr);
 
-                // 依次尝试不同的协议
-                var tryScheme = function(index) {
-                    if (index >= schemes.length) {
-                        // 所有协议都失败了，显示提示
+                // 给App 1.5秒响应时间
+                setTimeout(function() {
+                    if (ifr.parentNode) ifr.parentNode.removeChild(ifr);
+                }, 1500);
+
+                // 如果App没有打开，显示提示
+                setTimeout(function() {
+                    if (!document.hidden) {
                         showToast('请安装两步路App查看轨迹');
-                        return;
                     }
-
-                    var ifr = document.createElement('iframe');
-                    ifr.style.cssText = 'width:1px;height:1px;position:fixed;top:-10px;left:-10px;opacity:0;border:none;';
-                    ifr.src = schemes[index];
-                    document.body.appendChild(ifr);
-
-                    // 给App 1秒响应时间
-                    setTimeout(function() {
-                        if (ifr.parentNode) ifr.parentNode.removeChild(ifr);
-                        // 如果失败了，尝试下一个协议
-                        if (document.hidden || index === schemes.length - 1) {
-                            // 页面没有被隐藏，说明App没有打开
-                        }
-                    }, 1000);
-
-                    // 检查页面是否被激活（App被打开了）
-                    setTimeout(function() {
-                        if (!document.hidden) {
-                            // App已经打开，页面被隐藏了
-                            return;
-                        }
-                        // 尝试下一个协议
-                        tryScheme(index + 1);
-                    }, 1200);
-                };
-
-                tryScheme(0);
+                }, 2000);
             } else {
                 // 两步路首页
                 var ifr = document.createElement('iframe');
                 ifr.style.cssText = 'width:1px;height:1px;position:fixed;top:-10px;left:-10px;opacity:0;border:none;';
-                ifr.src = 'twobuluo://';
+                ifr.src = 'tbulu://';
                 document.body.appendChild(ifr);
                 setTimeout(function() {
                     if (ifr.parentNode) ifr.parentNode.removeChild(ifr);

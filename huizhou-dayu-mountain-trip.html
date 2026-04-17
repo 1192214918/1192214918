@@ -1597,10 +1597,9 @@
             showToast('正在打开两步路...');
 
             if (type === 'track') {
-                // 使用用户提供的正确协议格式
+                // 使用iframe尝试唤醒两步路App
                 var ifr = document.createElement('iframe');
                 ifr.style.cssText = 'width:1px;height:1px;position:fixed;top:-10px;left:-10px;opacity:0;border:none;';
-                // tbulu://track/detail?trackId=轨迹ID
                 ifr.src = 'tbulu://track/detail?trackId=99906';
                 document.body.appendChild(ifr);
 
@@ -1609,10 +1608,10 @@
                     if (ifr.parentNode) ifr.parentNode.removeChild(ifr);
                 }, 1500);
 
-                // 如果App没有打开，显示提示
+                // 如果App没有打开，2秒后打开网页版
                 setTimeout(function() {
                     if (!document.hidden) {
-                        showToast('请安装两步路App查看轨迹');
+                        window.location.href = 'https://www.2bulu.com/mc/route/detail?id=99906&type=2';
                     }
                 }, 2000);
             } else {

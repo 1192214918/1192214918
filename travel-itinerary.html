@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>4天3夜 惠州旅行路线</title>
+    <style>
+        :root {
+            --primary: #667eea;
+            --primary-end: #764ba2;
+            --day1-start: #f093fb;
+            --day1-end: #f5576c;
+            --day2-start: #4facfe;
+            --day2-end: #00f2fe;
+            --day3-start: #43e97b;
+            --day3-end: #38f9d7;
+            --day4-start: #fa709a;
+            --day4-end: #fee140;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(160deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            padding: 16px;
+            padding-bottom: 32px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 32px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero .date-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero .route-path {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .hero .route-path span {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+
+        .day-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .day-header {
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background: linear-gradient(135deg, var(--day-color-start) 0%, var(--day-color-end) 100%);
+        }
+
+        .day-1 { --day-color-start: var(--day1-start); --day-color-end: var(--day1-end); }
+        .day-2 { --day-color-start: var(--day2-start); --day-color-end: var(--day2-end); }
+        .day-3 { --day-color-start: var(--day3-start); --day-color-end: var(--day3-end); }
+        .day-4 { --day-color-start: var(--day4-start); --day-color-end: var(--day4-end); }
+
+        .day-number {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #fff;
+            flex-shrink: 0;
+            position: relative;
+            background: linear-gradient(135deg, var(--day-color-start) 0%, var(--day-color-end) 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .day-number .num {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .day-number .label {
+            font-size: 10px;
+            opacity: 0.9;
+        }
+
+        .day-info h2 {
+            font-size: 20px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            position: relative;
+        }
+
+        .day-info .date {
+            font-size: 13px;
+            color: #888;
+            position: relative;
+        }
+
+        .timeline {
+            padding: 0 20px 20px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 39px;
+            top: 60px;
+            bottom: 20px;
+            width: 2px;
+            background: linear-gradient(to bottom, #e0e0e0, transparent);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 16px 0;
+            position: relative;
+        }
+
+        .timeline-item:not(:last-child) {
+            border-bottom: 1px dashed #f0f0f0;
+        }
+
+        .timeline-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+            margin-right: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .icon-start { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+        .icon-end { background: linear-gradient(135deg, #ffebee, #ffcdd2); }
+        .icon-hotel { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+        .icon-food { background: linear-gradient(135deg, #fce4ec, #f8bbd9); }
+        .icon-hike { background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
+        .icon-return { background: linear-gradient(135deg, #f3e5f5, #e1bee7); }
+        .icon-wave { background: linear-gradient(135deg, #e0f7fa, #b2ebf2); }
+
+        .timeline-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .timeline-title {
+            font-size: 16px;
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-desc {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.5;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-end) 100%);
+            color: #fff;
+            border-radius: 24px;
+            font-size: 13px;
+            text-decoration: none;
+            margin-top: 10px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-btn:active {
+            transform: scale(0.96);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .route-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #fff;
+            border-radius: 24px;
+            font-size: 13px;
+            text-decoration: none;
+            margin-top: 10px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(79, 172, 254, 0.4);
+        }
+
+        .supply-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f0f5 100%);
+            border-radius: 16px;
+            padding: 16px;
+            margin-top: 12px;
+            border: 1px solid #e8e8e8;
+        }
+
+        .supply-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .supply-header .icon {
+            font-size: 20px;
+        }
+
+        .supply-header .title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .supply-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .supply-tag {
+            padding: 6px 12px;
+            background: #fff;
+            border-radius: 16px;
+            font-size: 12px;
+            color: #555;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .food-section {
+            background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+            border-radius: 16px;
+            padding: 16px;
+            margin-top: 12px;
+            border: 1px solid #ffe082;
+        }
+
+        .food-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .food-header .icon {
+            font-size: 20px;
+        }
+
+        .food-header .title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .food-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .food-item {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .food-item .emoji {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        .food-item .info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .food-item .name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .food-item .address {
+            font-size: 12px;
+            color: #999;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .food-item .nav-food-btn {
+            padding: 6px 12px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            color: #fff;
+            border-radius: 16px;
+            font-size: 11px;
+            text-decoration: none;
+            font-weight: 500;
+            flex-shrink: 0;
+            margin-left: 8px;
+        }
+
+        .hike-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 20px;
+            padding: 8px 14px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        .hike-badge .icon {
+            font-size: 14px;
+        }
+
+        .wave-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            border-radius: 20px;
+            padding: 8px 14px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #00838f;
+            font-weight: 500;
+        }
+
+        .wave-badge .icon {
+            font-size: 14px;
+        }
+
+        .footer-tip {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+        }
+
+        .divider {
+            height: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="date-badge">2025.5.1 - 5.4</div>
+        <h1>4天3夜 惠州旅行</h1>
+        <div class="route-path">
+            <span>广州</span>
+            <span>→</span>
+            <span>惠东</span>
+            <span>→</span>
+            <span>大南山</span>
+            <span>→</span>
+            <span>黑排角</span>
+            <span>→</span>
+            <span>广州</span>
+        </div>
+    </div>
+
+    <!-- 第一天 -->
+    <div class="day-card day-1">
+        <div class="day-header">
+            <div class="day-number">
+                <span class="num">01</span>
+                <span class="label">DAY</span>
+            </div>
+            <div class="day-info">
+                <h2>出发日 · 抵达惠东</h2>
+                <div class="date">5月1日</div>
+            </div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon icon-start">🚄</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">起点：广州</div>
+                    <div class="timeline-desc">从广州出发，乘坐高铁前往惠州惠东</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon icon-end">📍</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">目的地：惠州惠东高铁站</div>
+                    <div class="timeline-desc">抵达惠东，开始旅程</div>
+                    <a href="https://surl.amap.com/hmjPsyGx9fW" class="nav-btn">
+                        🗺️ 高德导航
+                    </a>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon icon-hotel">🏨</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">住宿：惠东大道1168号附近酒店</div>
+                    <div class="timeline-desc">第一晚住宿休息</div>
+                    <a href="amapuri://navi?sourceApplication=amap_mcp&lon=114.743600&lat=22.967010&dev=1&style=2" class="nav-btn">
+                        🗺️ 导航到酒店
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第二天 -->
+    <div class="day-card day-2">
+        <div class="day-header">
+            <div class="day-number">
+                <span class="num">02</span>
+                <span class="label">DAY</span>
+            </div>
+            <div class="day-info">
+                <h2>登山日 · 大南山</h2>
+                <div class="date">5月2日</div>
+            </div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon icon-start">🏨</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">起点：惠东大道1168号附近酒店</div>
+                    <div class="timeline-desc">享用早餐后出发</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon icon-hike">⛰️</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">目的地：大南山</div>
+                    <div class="timeline-desc">惠东著名山峰，风景秀丽，徒步爱好者的天堂</div>
+                    <a href="amapuri://navi?sourceApplication=amap_mcp&lon=114.903575&lat=22.923995&dev=1&style=2" class="nav-btn">
+                        🗺️ 导航到大南山
+                    </a>
+                    <div class="hike-badge">
+                        <span class="icon">🥾</span>
+                        <span>二步路轨迹：https://www.2bulu.com/mc/route/detail?id=99906</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon icon-food">🍜</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">美食推荐</div>
+                    <div class="timeline-desc">爬完山后前往附近美食店享用午餐/晚餐</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon icon-hotel">🏡</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">住宿：船家民宿</div>
+                    <div class="timeline-desc">黄埠镇盐洲西冲渡头村船家民宿</div>
+                    <a href="https://surl.amap.com/4UsnaZoQdVG" class="nav-btn">
+                        🗺️ 导航到民宿
+                    </a>
+                </div>
+            </div>
+            <div class="supply-card">
+                <div class="supply-header">
+                    <span class="icon">🎒</span>
+                    <span class="title">登山物资准备</span>
+                </div>
+                <div class="supply-tags">
+                    <span class="supply-tag">登山背包</span>
+                    <span class="supply-tag">登山鞋/防滑鞋</span>
+                    <span class="supply-tag">运动服装</span>
+                    <span class="supply-tag">防晒霜SPF50+</span>
+                    <span class="supply-tag">遮阳帽</span>
+                    <span class="supply-tag">墨镜</span>
+                    <span class="supply-tag">充足饮用水(2L+)</span>
+                    <span class="supply-tag">干粮/能量棒</span>
+                    <span class="supply-tag">创可贴</span>
+                    <span class="supply-tag">充电宝</span>
+                    <span class="supply-tag">登山杖(推荐)</span>
+                    <span class="supply-tag">手套</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第三天 -->
+    <div class="day-card day-3">
+        <div class="day-header">
+            <div class="day-number">
+                <span class="num">03</span>
+                <span class="label">DAY</span>
+            </div>
+            <div class="day-info">
+                <h2>游玩日 · 黑排角</h2>
+                <div class="date">5月3日</div>
+            </div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon icon-start">🏡</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">起点：船家民宿</div>
+                    <div class="timeline-desc">享用早餐后出发</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon icon-wave">🌊</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">活动：前往黑排角</div>
+                    <div class="timeline-desc">惠东最美海岸线之一，黑色礁石沙滩，拍照圣地</div>
+                    <a href="amapuri://navi?sourceApplication=amap_mcp&lon=114.957905&lat=22.666128&dev=1&style=2" class="nav-btn">
+                        🗺️ 导航到黑排角
+                    </a>
+                    <div class="wave-badge">
+                        <span class="icon">📍</span>
+                        <span>二步路轨迹：https://www.2bulu.com/track/track_detail.htm?trackId=oQgHHIgaDA/p/R2KBg5Tzw==</span>
+                    </div>
+                </div>
+            </div>
+            <div class="food-section">
+                <div class="food-header">
+                    <span class="icon">🍽️</span>
+                    <span class="title">附近扫街榜美食（黑排角周边5km）</span>
+                </div>
+                <div class="food-list">
+                    <div class="food-item">
+                        <span class="emoji">🦐</span>
+                        <div class="info">
+                            <div class="name">东成餐厅</div>
+                            <div class="address">建南街附近</div>
+                        </div>
+                        <a href="amapuri://navi?sourceApplication=amap_mcp&keyword=东成餐厅&dev=1" class="nav-food-btn">导航</a>
+                    </div>
+                    <div class="food-item">
+                        <span class="emoji">🐟</span>
+                        <div class="info">
+                            <div class="name">大洲餐厅</div>
+                            <div class="address">望斗村村民委员会西侧</div>
+                        </div>
+                        <a href="amapuri://navi?sourceApplication=amap_mcp&keyword=大洲餐厅&dev=1" class="nav-food-btn">导航</a>
+                    </div>
+                    <div class="food-item">
+                        <span class="emoji">🍳</span>
+                        <div class="info">
+                            <div class="name">新大洲餐厅</div>
+                            <div class="address">黄埠镇盐洲社区广场旁5号</div>
+                        </div>
+                        <a href="amapuri://navi?sourceApplication=amap_mcp&keyword=新大洲餐厅&dev=1" class="nav-food-btn">导航</a>
+                    </div>
+                    <div class="food-item">
+                        <span class="emoji">🥘</span>
+                        <div class="info">
+                            <div class="name">三鲜饭店</div>
+                            <div class="address">黄埠镇盐洲金前大路前寮村委会对面</div>
+                        </div>
+                        <a href="amapuri://navi?sourceApplication=amap_mcp&keyword=三鲜饭店&dev=1" class="nav-food-btn">导航</a>
+                    </div>
+                    <div class="food-item">
+                        <span class="emoji">🍗</span>
+                        <div class="info">
+                            <div class="name">奇香窑鸡店</div>
+                            <div class="address">港口镇东海村委应大村</div>
+                        </div>
+                        <a href="amapuri://navi?sourceApplication=amap_mcp&keyword=奇香窑鸡店&dev=1" class="nav-food-btn">导航</a>
+                    </div>
+                    <div class="food-item">
+                        <span class="emoji">🍖</span>
+                        <div class="info">
+                            <div class="name">田园土窑鸡店</div>
+                            <div class="address">港口镇应大村100号</div>
+                        </div>
+                        <a href="amapuri://navi?sourceApplication=amap_mcp&keyword=田园土窑鸡店&dev=1" class="nav-food-btn">导航</a>
+                    </div>
+                    <div class="food-item">
+                        <span class="emoji">🥟</span>
+                        <div class="info">
+                            <div class="name">盐洲岛作记肠粉</div>
+                            <div class="address">盐洲镇联新村民委员会办公楼西南侧50米</div>
+                        </div>
+                        <a href="amapuri://navi?sourceApplication=amap_mcp&keyword=盐洲岛作记肠粉&dev=1" class="nav-food-btn">导航</a>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon icon-hotel">🏡</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">住宿：黄埠镇盐洲西冲渡头村船家民宿</div>
+                    <div class="timeline-desc">返回民宿休息</div>
+                    <a href="amapuri://navi?sourceApplication=amap_mcp&lon=114.967295&lat=22.688906&dev=1&style=2" class="nav-btn">
+                        🗺️ 导航回民宿
+                    </a>
+                </div>
+            </div>
+            <div class="supply-card">
+                <div class="supply-header">
+                    <span class="icon">🎒</span>
+                    <span class="title">海岸线游玩物资</span>
+                </div>
+                <div class="supply-tags">
+                    <span class="supply-tag">轻便背包</span>
+                    <span class="supply-tag">拖鞋/凉鞋</span>
+                    <span class="supply-tag">防晒衣</span>
+                    <span class="supply-tag">防晒霜SPF50+</span>
+                    <span class="supply-tag">遮阳帽</span>
+                    <span class="supply-tag">墨镜</span>
+                    <span class="supply-tag">饮用水</span>
+                    <span class="supply-tag">手机防水袋</span>
+                    <span class="supply-tag">创可贴</span>
+                    <span class="supply-tag">纸巾/湿巾</span>
+                    <span class="supply-tag">相机</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第四天 -->
+    <div class="day-card day-4">
+        <div class="day-header">
+            <div class="day-number">
+                <span class="num">04</span>
+                <span class="label">DAY</span>
+            </div>
+            <div class="day-info">
+                <h2>返程日 · 返回广州</h2>
+                <div class="date">5月4日</div>
+            </div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon icon-start">🏡</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">起点：船家民宿</div>
+                    <div class="timeline-desc">中午从住宿地点出发</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon icon-return">🏠</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">目的地：广州</div>
+                    <div class="timeline-desc">返程回家，结束愉快的旅行</div>
+                    <a href="amapuri://navi?sourceApplication=amap_mcp&lon=113.264499&lat=23.130061&dev=1&style=2" class="nav-btn">
+                        🗺️ 导航回广州
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="footer-tip">
+        点击导航按钮可直接跳转高德地图App
+    </div>
+
+    <script>
+        document.querySelectorAll('.nav-btn, .nav-food-btn, .route-link-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                // 尝试打开App
+                setTimeout(() => {
+                    // 如果是amapuri协议，在一些环境下可能无法直接跳转
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

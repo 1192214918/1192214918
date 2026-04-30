@@ -467,7 +467,7 @@
                 <div class="timeline-content">
                     <div class="timeline-title">住宿：四海国际大酒店</div>
                     <div class="timeline-desc">4.4分·舒适型｜【扫街榜｜平山舒适型酒店榜第1名】<br>惠东大道1168号</div>
-                    <a href="https://surl.amap.com/hmjPsyGx9fW" class="nav-btn" data-type="amap">
+                    <a href="amapuri://poi?sourceApplication=travel_itinerary&url=https%3A%2F%2Fsurl.amap.com%2FhmjPsyGx9fW" class="nav-btn" data-type="amap-direct">
                         🗺️ 查看酒店详情
                     </a>
                 </div>
@@ -521,7 +521,7 @@
                 <div class="timeline-content">
                     <div class="timeline-title">住宿：船家民宿</div>
                     <div class="timeline-desc">4.3分·民宿｜黄埠镇盐洲西冲渡头村船家民宿</div>
-                    <a href="https://surl.amap.com/4UsnaZoQdVG" class="nav-btn" data-type="amap">
+                    <a href="amapuri://poi?sourceApplication=travel_itinerary&url=https%3A%2F%2Fsurl.amap.com%2F4UsnaZoQdVG" class="nav-btn" data-type="amap-direct">
                         🗺️ 查看民宿详情
                     </a>
                 </div>
@@ -652,7 +652,7 @@
                 <div class="timeline-content">
                     <div class="timeline-title">住宿：黄埠镇盐洲西冲渡头村船家民宿</div>
                     <div class="timeline-desc">返回民宿休息</div>
-                    <a href="https://surl.amap.com/4UsnaZoQdVG" class="nav-btn" data-type="amap">
+                    <a href="amapuri://poi?sourceApplication=travel_itinerary&url=https%3A%2F%2Fsurl.amap.com%2F4UsnaZoQdVG" class="nav-btn" data-type="amap-direct">
                         🗺️ 导航回民宿
                     </a>
                 </div>
@@ -719,12 +719,21 @@
     </div>
 
     <script>
+        // 直接跳转App类型（href已经是amapuri://格式）
+        document.querySelectorAll('.nav-btn[data-type="amap-direct"]').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                window.location.href = href;
+            });
+        });
+
+        // 短链接类型（href是https://surl.amap.com格式）
         document.querySelectorAll('.nav-btn[data-type="amap"]').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
                 const href = this.getAttribute('href');
                 // 尝试打开高德地图App的POI详情页
-                var start = Date.now();
                 var ifr = document.createElement('iframe');
                 ifr.src = 'amapuri://poi?sourceApplication=travel_itinerary&url=' + encodeURIComponent(href);
                 ifr.style.display = 'none';

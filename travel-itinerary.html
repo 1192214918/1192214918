@@ -465,10 +465,10 @@
             <div class="timeline-item">
                 <div class="timeline-icon icon-hotel">🏨</div>
                 <div class="timeline-content">
-                    <div class="timeline-title">住宿：惠东大道1168号附近酒店</div>
-                    <div class="timeline-desc">第一晚住宿休息</div>
-                    <a href="amapuri://navi?sourceApplication=amap_mcp&lon=114.743600&lat=22.967010&dev=1&style=2" class="nav-btn">
-                        🗺️ 导航到酒店
+                    <div class="timeline-title">住宿：四海国际大酒店</div>
+                    <div class="timeline-desc">4.4分·舒适型｜【扫街榜｜平山舒适型酒店榜第1名】<br>惠东大道1168号</div>
+                    <a href="https://surl.amap.com/hmjPsyGx9fW" class="nav-btn" data-type="amap">
+                        🗺️ 查看酒店详情
                     </a>
                 </div>
             </div>
@@ -491,7 +491,7 @@
             <div class="timeline-item">
                 <div class="timeline-icon icon-start">🏨</div>
                 <div class="timeline-content">
-                    <div class="timeline-title">起点：惠东大道1168号附近酒店</div>
+                    <div class="timeline-title">起点：四海国际大酒店</div>
                     <div class="timeline-desc">享用早餐后出发</div>
                 </div>
             </div>
@@ -500,12 +500,12 @@
                 <div class="timeline-content">
                     <div class="timeline-title">目的地：大南山</div>
                     <div class="timeline-desc">惠东著名山峰，风景秀丽，徒步爱好者的天堂</div>
-                    <a href="amapuri://navi?sourceApplication=amap_mcp&lon=114.903575&lat=22.923995&dev=1&style=2" class="nav-btn">
+                    <a href="https://surl.amap.com/1Usnb3OQdVg" class="nav-btn" data-type="amap">
                         🗺️ 导航到大南山
                     </a>
                     <div class="hike-badge">
                         <span class="icon">🥾</span>
-                        <span>二步路轨迹：https://www.2bulu.com/mc/route/detail?id=99906</span>
+                        <a href="https://www.2bulu.com/mc/route/detail?id=99906" target="_blank" class="route-link-btn" style="background:linear-gradient(135deg,#43e97b,#38f9d7);margin-top:0;">查看二步路轨迹</a>
                     </div>
                 </div>
             </div>
@@ -520,9 +520,9 @@
                 <div class="timeline-icon icon-hotel">🏡</div>
                 <div class="timeline-content">
                     <div class="timeline-title">住宿：船家民宿</div>
-                    <div class="timeline-desc">黄埠镇盐洲西冲渡头村船家民宿</div>
-                    <a href="https://surl.amap.com/4UsnaZoQdVG" class="nav-btn">
-                        🗺️ 导航到民宿
+                    <div class="timeline-desc">4.3分·民宿｜黄埠镇盐洲西冲渡头村船家民宿</div>
+                    <a href="https://surl.amap.com/4UsnaZoQdVG" class="nav-btn" data-type="amap">
+                        🗺️ 查看民宿详情
                     </a>
                 </div>
             </div>
@@ -574,12 +574,12 @@
                 <div class="timeline-content">
                     <div class="timeline-title">活动：前往黑排角</div>
                     <div class="timeline-desc">惠东最美海岸线之一，黑色礁石沙滩，拍照圣地</div>
-                    <a href="amapuri://navi?sourceApplication=amap_mcp&lon=114.957905&lat=22.666128&dev=1&style=2" class="nav-btn">
+                    <a href="https://surl.amap.com/1Usn91EPQdVe" class="nav-btn" data-type="amap">
                         🗺️ 导航到黑排角
                     </a>
                     <div class="wave-badge">
                         <span class="icon">📍</span>
-                        <span>二步路轨迹：https://www.2bulu.com/track/track_detail.htm?trackId=oQgHHIgaDA/p/R2KBg5Tzw==</span>
+                        <a href="https://www.2bulu.com/track/track_detail.htm?trackId=oQgHHIgaDA/p/R2KBg5Tzw==" target="_blank" class="route-link-btn" style="background:linear-gradient(135deg,#4facfe,#00f2fe);margin-top:0;">查看二步路轨迹</a>
                     </div>
                 </div>
             </div>
@@ -652,7 +652,7 @@
                 <div class="timeline-content">
                     <div class="timeline-title">住宿：黄埠镇盐洲西冲渡头村船家民宿</div>
                     <div class="timeline-desc">返回民宿休息</div>
-                    <a href="amapuri://navi?sourceApplication=amap_mcp&lon=114.967295&lat=22.688906&dev=1&style=2" class="nav-btn">
+                    <a href="https://surl.amap.com/4UsnaZoQdVG" class="nav-btn" data-type="amap">
                         🗺️ 导航回民宿
                     </a>
                 </div>
@@ -704,7 +704,7 @@
                 <div class="timeline-content">
                     <div class="timeline-title">目的地：广州</div>
                     <div class="timeline-desc">返程回家，结束愉快的旅行</div>
-                    <a href="amapuri://navi?sourceApplication=amap_mcp&lon=113.264499&lat=23.130061&dev=1&style=2" class="nav-btn">
+                    <a href="https://surl.amap.com/1Usnc2OQdVh" class="nav-btn" data-type="amap">
                         🗺️ 导航回广州
                     </a>
                 </div>
@@ -719,13 +719,21 @@
     </div>
 
     <script>
-        document.querySelectorAll('.nav-btn, .nav-food-btn, .route-link-btn').forEach(btn => {
+        document.querySelectorAll('.nav-btn[data-type="amap"]').forEach(btn => {
             btn.addEventListener('click', function(e) {
+                e.preventDefault();
                 const href = this.getAttribute('href');
-                // 尝试打开App
-                setTimeout(() => {
-                    // 如果是amapuri协议，在一些环境下可能无法直接跳转
-                }, 100);
+                // 尝试打开高德地图App的POI详情页
+                var start = Date.now();
+                var ifr = document.createElement('iframe');
+                ifr.src = 'amapuri://poi?sourceApplication=travel_itinerary&url=' + encodeURIComponent(href);
+                ifr.style.display = 'none';
+                document.body.appendChild(ifr);
+                // 如果1秒内没反应，说明App没安装或不支持，直接跳转短链接
+                setTimeout(function() {
+                    document.body.removeChild(ifr);
+                    window.location.href = href;
+                }, 1000);
             });
         });
     </script>
